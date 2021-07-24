@@ -1,12 +1,12 @@
 import "./User.css";
 import { useState, useEffect } from "react";
 import UserInfo from "../components/UserInfo/UserInfo";
+import Searchbar from "../components/Searchbar/Searchbar";
 
 export default function User() {
   const URL = "https://api.hatchways.io/assessment/students";
   const [results, setResults] = useState([]);
   const [filter, setFilter] = useState([]);
-  const [search, setSearch] = useState("");
 
   function fetchData(url) {
     return fetch(url)
@@ -31,10 +31,7 @@ export default function User() {
     results.forEach(results => {
       if (
         results.firstName
-          .toLowerCase()
-          .replace(/\s/g, "")
-          .indexOf(input.toLowerCase().replace(/\s/g, "")) > -1 ||
-        results.lastName
+          .concat(" ", results.lastName)
           .toLowerCase()
           .replace(/\s/g, "")
           .indexOf(input.toLowerCase().replace(/\s/g, "")) > -1
@@ -53,18 +50,7 @@ export default function User() {
 
   return (
     <div>
-      <input
-        className="searchbar"
-        value={search}
-        onFocus={() => {
-          setSearch("");
-          filterInput("");
-        }}
-        onChange={e => setSearch(e.target.value)}
-        onKeyUp={e => filterInput(e.target.value.trim())}
-        label="Search"
-        placeholder="Search by name"
-      />
+      <Searchbar placeholder="Search by name" handleSearch={filterInput} />
       <UserInfo users={filter} findAverage={findAverage} />
     </div>
   );

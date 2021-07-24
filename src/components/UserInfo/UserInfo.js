@@ -1,5 +1,4 @@
 import "./UserInfo.css";
-import React from "react";
 import Thumbnail from "../Thumbnail/Thumbnail";
 
 export default function UserInfo({ users, findAverage }) {
