@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
 
 function App() {
+  const URL = "https://api.hatchways.io/assessment/students";
+  const [results, setResults] = useState([]);
+
+  function fetchData(url) {
+    return fetch(url)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw response;
+      })
+      .catch(error => console.error("Bad request", error));
+  }
+
+  useEffect(() => {
+    fetchData(URL).then(data => {
+      setResults(data);
+    });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>New React Project</h1>
     </div>
   );
 }
