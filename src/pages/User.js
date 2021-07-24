@@ -1,6 +1,6 @@
 import "./User.css";
 import { useState, useEffect } from "react";
-import Thumbnail from "../components/Thumbnail/Thumbnail";
+import UserInfo from "../components/UserInfo/UserInfo";
 
 export default function User() {
   const URL = "https://api.hatchways.io/assessment/students";
@@ -65,20 +65,7 @@ export default function User() {
         label="Search"
         placeholder="Search by name"
       />
-      {filter.map(result => (
-        <div className="flex-container" key={result.id}>
-          <Thumbnail thumbnail={result.pic} />
-          <div className="user-info">
-            <h2>
-              {result.firstName} {result.lastName}
-            </h2>
-            <p>Email: {result.email}</p>
-            <p>Company: {result.company}</p>
-            <p>Skill: {result.skill}</p>
-            <p>Average: {findAverage(result.grades)}%</p>
-          </div>
-        </div>
-      ))}
+      <UserInfo users={filter} findAverage={findAverage} />
     </div>
   );
 }
