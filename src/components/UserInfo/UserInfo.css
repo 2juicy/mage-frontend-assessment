@@ -1,3 +1,12 @@
+.flex-container {
+  margin: 0;
+  padding: 5px 0 5px 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
 .user-info {
   margin-left: 15px;
 }
