@@ -1,3 +1,4 @@
+import "./User.css";
 import { useEffect, useState } from "react";
 import Thumbnail from "../components/Thumbnail";
 
@@ -34,15 +35,17 @@ export default function User() {
     <div>
       <h1>Searchbar and title here</h1>
       {results.map(result => (
-        <div className="flex-container" key={result.email}>
+        <div className="flex-container" key={result.id}>
           <Thumbnail thumbnail={result.pic} />
-          <h2>
-            {result.firstName} {result.lastName}
-          </h2>
-          <p>Email: {result.email}</p>
-          <p>Company: {result.comppany}</p>
-          <p>Skill: {result.skill}</p>
-          <p>Average: {findAverage(result.grades)}%</p>
+          <div className="user-info">
+            <h2>
+              {result.firstName} {result.lastName}
+            </h2>
+            <p>Email: {result.email}</p>
+            <p>Company: {result.company}</p>
+            <p>Skill: {result.skill}</p>
+            <p>Average: {findAverage(result.grades)}%</p>
+          </div>
         </div>
       ))}
     </div>
