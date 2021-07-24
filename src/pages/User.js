@@ -53,8 +53,8 @@ export default function User() {
 
   return (
     <div>
-      <h1>Searchbar and title here</h1>
       <input
+        className="searchbar"
         value={search}
         onFocus={() => {
           setSearch("");
@@ -63,7 +63,7 @@ export default function User() {
         onChange={e => setSearch(e.target.value)}
         onKeyUp={e => filterInput(e.target.value.trim())}
         label="Search"
-        placeholder="Search/Filter"
+        placeholder="Search by name"
       />
       {filter.map(result => (
         <div className="flex-container" key={result.id}>
