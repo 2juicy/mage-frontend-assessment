@@ -26,7 +26,7 @@ export default function User() {
     });
   }, []);
 
-  const filterInput = input => {
+  function filterInput(input) {
     let filterArr = [];
     results.forEach(results => {
       if (
@@ -40,7 +40,7 @@ export default function User() {
       }
     });
     setFilter(filterArr);
-  };
+  }
 
   function findAverage(arr) {
     return arr.reduce(function (avg, value, _, { length }) {
