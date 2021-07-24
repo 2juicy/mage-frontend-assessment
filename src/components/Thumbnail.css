@@ -1,11 +1,6 @@
 .thumbnail > img {
   height: 100px;
   width: auto;
-  border-radius: 25px;
-}
-
-.thumbnail > iframe {
-  width: 100%;
-  height: 500px;
-  margin-right: 16px;
+  border: 1px solid black;
+  border-radius: 100px;
 }

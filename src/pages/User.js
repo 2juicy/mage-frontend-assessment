@@ -16,6 +16,12 @@ export default function User() {
       .catch(error => console.error("Bad request", error));
   }
 
+  function findAverage(arr) {
+    return arr.reduce(function (avg, value, _, { length }) {
+      return avg + value / length;
+    }, 0);
+  }
+
   useEffect(() => {
     fetchData(URL).then(data => {
       setResults(data.students);
@@ -33,6 +39,10 @@ export default function User() {
           <h2>
             {result.firstName} {result.lastName}
           </h2>
+          <p>Email: {result.email}</p>
+          <p>Company: {result.comppany}</p>
+          <p>Skill: {result.skill}</p>
+          <p>Average: {findAverage(result.grades)}%</p>
         </div>
       ))}
     </div>
