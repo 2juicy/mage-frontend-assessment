@@ -81,9 +81,11 @@ export default function User() {
     setFilter([...filter]);
   }
 
-  function addTag(tags, index) {
-    filter[index].tags = [...filter[index].tags, tags];
-    setFilter([...filter]);
+  function addTag(tag, index) {
+    if (!filter[index].tags.includes(tag)) {
+      filter[index].tags = [...filter[index].tags, tag];
+      setFilter([...filter]);
+    }
   }
 
   return (

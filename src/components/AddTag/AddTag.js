@@ -11,7 +11,7 @@ export default function AddTag({ placeholder, addTag, index }) {
       onChange={e => setInput(e.target.value)}
       onKeyDown={e => {
         if (e.key === "Enter") {
-          addTag(e.target.value.trim(), index, e.key);
+          addTag(e.target.value.trim(), index);
           setInput("");
         }
       }}
