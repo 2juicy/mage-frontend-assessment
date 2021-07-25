@@ -1,5 +1,4 @@
 import "./UserInfo.css";
-// import { useState } from "react";
 import Thumbnail from "../Thumbnail/Thumbnail";
 import Grades from "../Grades/Grades";
 import Expandible from "../Expandible/Expandible";
@@ -20,7 +19,7 @@ export default function UserInfo({ users, findAverage, handleExpand }) {
             <Grades grades={data.grades} findAverage={findAverage}>
               <Expandible
                 contents={data.grades}
-                show={data.show ? null : "expandible"}
+                show={data.show ? "expandible" : "expandible hidden"}
               />
             </Grades>
           </div>

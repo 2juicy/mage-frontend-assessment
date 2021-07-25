@@ -1,3 +1,5 @@
+import "./Expandible.css";
+
 export default function Expandible({ contents, show }) {
   return (
     <tbody className={show}>

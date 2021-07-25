@@ -11,8 +11,3 @@ td {
 th {
   padding-bottom: 15px;
 }
-
-.expandible {
-  display: none;
-  overflow: hidden;
-}
