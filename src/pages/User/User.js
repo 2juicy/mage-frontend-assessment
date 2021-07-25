@@ -22,6 +22,7 @@ export default function User() {
   useEffect(() => {
     fetchData(URL).then(data => {
       setResults(data.students);
+      data.students.forEach(student => (student.show = false));
       setFilter(data.students);
     });
   }, []);
@@ -48,10 +49,21 @@ export default function User() {
     }, 0);
   }
 
+  function handleExpand(index) {
+    filter[index].show = !filter[index].show;
+    setFilter([...filter]);
+  }
+
+  console.log(filter);
+
   return (
     <div>
       <Searchbar placeholder="Search by name" handleSearch={filterInput} />
-      <UserInfo users={filter} findAverage={findAverage} />
+      <UserInfo
+        users={filter}
+        findAverage={findAverage}
+        handleExpand={handleExpand}
+      />
     </div>
   );
 }

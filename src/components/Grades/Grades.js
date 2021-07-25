@@ -1,7 +1,6 @@
 import "./Grades.css";
-import Expandible from "../Expandible/Expandible";
 
-export default function Grades({ grades, findAverage }) {
+export default function Grades({ grades, findAverage, children }) {
   return (
     <table className="grades">
       <thead>
@@ -10,7 +9,7 @@ export default function Grades({ grades, findAverage }) {
           <th>{findAverage(grades)}%</th>
         </tr>
       </thead>
-      <Expandible contents={grades} />
+      {children}
     </table>
   );
 }
