@@ -62,6 +62,7 @@ export default function User() {
             ) {
               return filterTag.push(result);
             }
+            return false;
           });
         }
       });
