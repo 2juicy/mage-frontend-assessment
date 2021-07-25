@@ -20,7 +20,7 @@
   margin: 0 0 2.5px 15px;
 }
 
-.expandible {
+.expandible-button {
   color: gray;
   font-size: 36px;
   margin: 0 0 auto auto;
@@ -28,6 +28,6 @@
   border: none;
 }
 
-.expandible:hover {
+.expandible-button:hover {
   color: black;
 }

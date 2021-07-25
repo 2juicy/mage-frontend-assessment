@@ -1,9 +1,14 @@
-table {
+.grades {
   margin: 0 0 0 15px;
 }
 
-th,
-td {
+.grades > tr > th,
+.grades > tr > td {
   padding: 0;
   font-weight: normal;
+}
+
+.expandible {
+  display: none;
+  overflow: hidden;
 }

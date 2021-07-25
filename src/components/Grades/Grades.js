@@ -1,5 +1,5 @@
 import "./Grades.css";
-import React from "react";
+import Expandible from "../Expandible/Expandible";
 
 export default function Grades({ grades, findAverage }) {
   return (
@@ -8,13 +8,7 @@ export default function Grades({ grades, findAverage }) {
         <th>Average:&nbsp;</th>
         <th>{findAverage(grades)}%</th>
       </tr>
-      <br />
-      {grades.map((content, index) => (
-        <tr>
-          <td>Test {index + 1}:</td>
-          <td>{content}%</td>
-        </tr>
-      ))}
+      <Expandible contents={grades} />
     </table>
   );
 }
