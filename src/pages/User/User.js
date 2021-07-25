@@ -59,6 +59,7 @@ export default function User() {
   return (
     <div className="paper">
       <Searchbar placeholder="Search by name" handleSearch={filterInput} />
+      <Searchbar placeholder="Search by tag" handleSearch={filterInput} />
       <UserInfo
         users={filter}
         findAverage={findAverage}

@@ -1,13 +1,12 @@
 .searchbar {
+  font-family: "Raleway", sans-serif;
   width: calc(100% - 19px);
-  z-index: -1;
   height: 35px;
   margin: 5px;
   padding: 5px;
   font-size: 18px;
   border: none;
   border-bottom: 2px solid rgba(0, 0, 0, 0.25);
-  overflow: hidden;
 }
 
 .searchbar:focus {
