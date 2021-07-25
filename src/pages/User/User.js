@@ -53,14 +53,14 @@ export default function User() {
       let filterTag = [];
       filterArr.forEach(result => {
         if (result.tags.length > 0) {
-          result.tags.forEach(data => {
+          result.tags.some(data => {
             if (
               data
                 .toLowerCase()
                 .replace(/\s/g, "")
                 .indexOf(tag.toLowerCase().replace(/\s/g, "")) > -1
             ) {
-              filterTag.push(result);
+              return filterTag.push(result);
             }
           });
         }
