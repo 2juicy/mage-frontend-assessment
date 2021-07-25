@@ -22,12 +22,13 @@ export default function UserInfo({ users, findAverage, handleExpand }) {
             <Grades grades={data.grades} findAverage={findAverage}>
               <Expandible
                 contents={data.grades}
-                show={data.show ? "expandible" : "expandible hidden"}
+                show={data.show ? "expandible" : "hidden"}
               />
             </Grades>
             <div className="tagbar">
               <p>tag1</p>
               <p>ta1</p>
+              <p>tag3</p>
             </div>
             <input
               className="tag-input"
