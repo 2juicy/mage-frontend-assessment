@@ -30,7 +30,7 @@ export default function User() {
     });
   }, []);
 
-  function filterInput(input) {
+  function filterName(name) {
     let filterArr = [];
     results.forEach(results => {
       if (
@@ -38,11 +38,17 @@ export default function User() {
           .concat(" ", results.lastName)
           .toLowerCase()
           .replace(/\s/g, "")
-          .indexOf(input.toLowerCase().replace(/\s/g, "")) > -1
+          .indexOf(name.toLowerCase().replace(/\s/g, "")) > -1
       ) {
         filterArr.push(results);
       }
     });
+
+    // filteredArr.forEach(filtered => {
+    //   if (filtered.tags) {
+
+    //   }
+    // })
     setFilter(filterArr);
   }
 
@@ -65,8 +71,11 @@ export default function User() {
 
   return (
     <div className="paper">
-      <Searchbar placeholder="Search by name" handleSearch={filterInput} />
-      <Searchbar placeholder="Search by tag" handleSearch={filterInput} />
+      <Searchbar placeholder="Search by name" handleSearch={filterName} />
+      <Searchbar
+        placeholder="Search by tag"
+        handleSearch={() => console.log("nothing")}
+      />
       <UserInfo
         users={filter}
         findAverage={findAverage}
