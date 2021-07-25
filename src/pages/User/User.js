@@ -32,15 +32,15 @@ export default function User() {
 
   function filterName(name) {
     let filterArr = [];
-    results.forEach(results => {
+    results.forEach(result => {
       if (
-        results.firstName
-          .concat(" ", results.lastName)
+        result.firstName
+          .concat(" ", result.lastName)
           .toLowerCase()
           .replace(/\s/g, "")
           .indexOf(name.toLowerCase().replace(/\s/g, "")) > -1
       ) {
-        filterArr.push(results);
+        filterArr.push(result);
       }
     });
 
