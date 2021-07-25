@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/mage-frontend-assessment/static/css/main.40866cc6.chunk.css",
+    "main.js": "/mage-frontend-assessment/static/js/main.851e904b.chunk.js",
+    "main.js.map": "/mage-frontend-assessment/static/js/main.851e904b.chunk.js.map",
+    "runtime-main.js": "/mage-frontend-assessment/static/js/runtime-main.55c26287.js",
+    "runtime-main.js.map": "/mage-frontend-assessment/static/js/runtime-main.55c26287.js.map",
+    "static/js/2.79d2f049.chunk.js": "/mage-frontend-assessment/static/js/2.79d2f049.chunk.js",
+    "static/js/2.79d2f049.chunk.js.map": "/mage-frontend-assessment/static/js/2.79d2f049.chunk.js.map",
+    "index.html": "/mage-frontend-assessment/index.html",
+    "static/css/main.40866cc6.chunk.css.map": "/mage-frontend-assessment/static/css/main.40866cc6.chunk.css.map",
+    "static/js/2.79d2f049.chunk.js.LICENSE.txt": "/mage-frontend-assessment/static/js/2.79d2f049.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.55c26287.js",
+    "static/js/2.79d2f049.chunk.js",
+    "static/css/main.40866cc6.chunk.css",
+    "static/js/main.851e904b.chunk.js"
+  ]
+}
