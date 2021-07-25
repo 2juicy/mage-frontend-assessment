@@ -1,7 +1,9 @@
 import "./UserInfo.css";
 import Thumbnail from "../Thumbnail/Thumbnail";
+import Grades from "../Grades/Grades";
 
 export default function UserInfo({ users, findAverage }) {
+  console.log(users);
   return (
     <>
       {users.map(data => (
@@ -14,9 +16,9 @@ export default function UserInfo({ users, findAverage }) {
             <p>Email: {data.email}</p>
             <p>Company: {data.company}</p>
             <p>Skill: {data.skill}</p>
-            <p>Average: {findAverage(data.grades)}%</p>
+            <Grades grades={data.grades} findAverage={findAverage} />
           </div>
-          <button type="button" class="expandible">
+          <button type="button" className="expandible">
             +
           </button>
         </div>
