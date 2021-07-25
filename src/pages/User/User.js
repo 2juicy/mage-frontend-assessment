@@ -49,7 +49,7 @@ export default function User() {
     });
 
     // If a tag parameter exists we then continue to filter by tag
-    if (tag) {
+    if (tag.length > 0) {
       let filterTag = [];
       filterArr.forEach(result => {
         if (result.tags.length > 0) {
