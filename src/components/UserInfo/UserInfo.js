@@ -25,8 +25,8 @@ export default function UserInfo({ users, findAverage, handleExpand, addTag }) {
             </Grades>
             {user.tags.length ? (
               <div className="tagbar">
-                {user.tags.map(tag => (
-                  <p>{tag}</p>
+                {user.tags.map((tag, index) => (
+                  <p key={index}>{tag}</p>
                 ))}
               </div>
             ) : null}
