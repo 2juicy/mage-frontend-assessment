@@ -1,9 +1,8 @@
-import User from "./pages/User";
+import User from "./pages/User/User";
 
 function App() {
   return (
     <div>
-      {/* Routing could be done if we add more pages */}
       <User />
     </div>
   );

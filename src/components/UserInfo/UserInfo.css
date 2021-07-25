@@ -3,7 +3,6 @@
   padding: 5px 0 5px 10px;
   display: flex;
   align-items: center;
-  cursor: pointer;
   border-bottom: 1px solid rgba(0, 0, 0, 0.25);
 }
 
@@ -20,4 +19,12 @@
 
 .user-info > p {
   margin: 0 0 2.5px 15px;
+}
+
+.expandible {
+  color: gray;
+  font-size: 36px;
+  margin: 0 0 auto auto;
+  background-color: transparent;
+  border: none;
 }

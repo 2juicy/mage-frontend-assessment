@@ -16,6 +16,9 @@ export default function UserInfo({ users, findAverage }) {
             <p>Skill: {data.skill}</p>
             <p>Average: {findAverage(data.grades)}%</p>
           </div>
+          <button type="button" class="expandible">
+            +
+          </button>
         </div>
       ))}
     </>
