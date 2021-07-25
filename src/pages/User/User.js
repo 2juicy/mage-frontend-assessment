@@ -22,7 +22,10 @@ export default function User() {
   useEffect(() => {
     fetchData(URL).then(data => {
       setResults(data.students);
-      data.students.forEach(student => (student.show = false));
+      data.students.forEach(student => {
+        student.show = false;
+        student.tags = [];
+      });
       setFilter(data.students);
     });
   }, []);
@@ -54,6 +57,10 @@ export default function User() {
     setFilter([...filter]);
   }
 
+  function addTag(tags, index) {
+    filter[index].tags = [...filter[index].tags, tags];
+    setFilter([...filter]);
+  }
   console.log(filter);
 
   return (
@@ -64,6 +71,7 @@ export default function User() {
         users={filter}
         findAverage={findAverage}
         handleExpand={handleExpand}
+        addTag={addTag}
       />
     </div>
   );
