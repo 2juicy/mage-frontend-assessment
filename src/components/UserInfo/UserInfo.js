@@ -1,40 +1,40 @@
 import "./UserInfo.css";
-import { useState } from "react";
 import Thumbnail from "../Thumbnail/Thumbnail";
 import Grades from "../Grades/Grades";
 import Expandible from "../Expandible/Expandible";
+import AddTag from "../AddTag/AddTag";
 
-export default function UserInfo({ users, findAverage, handleExpand }) {
-  const [input, setInput] = useState("");
-
+export default function UserInfo({ users, findAverage, handleExpand, addTag }) {
   return (
     <>
-      {users.map((data, index) => (
-        <div className="flex-container" key={data.id}>
-          <Thumbnail thumbnail={data.pic} />
+      {users.map((user, index) => (
+        <div className="flex-container" key={user.id}>
+          <Thumbnail thumbnail={user.pic} />
           <div className="user-info">
             <h2>
-              {data.firstName} {data.lastName}
+              {user.firstName} {user.lastName}
             </h2>
-            <p>Email: {data.email}</p>
-            <p>Company: {data.company}</p>
-            <p>Skill: {data.skill}</p>
-            <Grades grades={data.grades} findAverage={findAverage}>
+            <p>Email: {user.email}</p>
+            <p>Company: {user.company}</p>
+            <p>Skill: {user.skill}</p>
+            <Grades grades={user.grades} findAverage={findAverage}>
               <Expandible
-                contents={data.grades}
-                show={data.show ? "expandible" : "hidden"}
+                contents={user.grades}
+                show={user.show ? "expandible" : "hidden"}
               />
             </Grades>
-            <div className="tagbar">
-              <p>tag1</p>
-              <p>ta1</p>
-              <p>tag3</p>
-            </div>
-            <input
+            {user.tags.length ? (
+              <div className="tagbar">
+                {user.tags.map(tag => (
+                  <p>{tag}</p>
+                ))}
+              </div>
+            ) : null}
+            <AddTag
               className="tag-input"
-              value={input}
-              onChange={e => setInput(e.target.value)}
               placeholder="Add a tag"
+              addTag={addTag}
+              index={index}
             />
           </div>
           <button
@@ -42,7 +42,7 @@ export default function UserInfo({ users, findAverage, handleExpand }) {
             className="expandible-button"
             onClick={() => handleExpand(index)}
           >
-            {data.show ? "-" : "+"}
+            {user.show ? "-" : "+"}
           </button>
         </div>
       ))}
