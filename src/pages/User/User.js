@@ -1,12 +1,15 @@
 import "./User.css";
 import { useState, useEffect } from "react";
 import UserInfo from "../../components/UserInfo/UserInfo";
-import Searchbar from "../../components/Searchbar/Searchbar";
 
 export default function User() {
+  // Stored fetch request data
   const URL = "https://api.hatchways.io/assessment/students";
   const [results, setResults] = useState([]);
+  // Search plus filtered results
   const [filter, setFilter] = useState([]);
+  const [name, setName] = useState("");
+  const [tag, setTag] = useState("");
 
   function fetchData(url) {
     return fetch(url)
@@ -30,7 +33,8 @@ export default function User() {
     });
   }, []);
 
-  function filterName(name) {
+  function filterResults(name, tag) {
+    // First we filter by name
     let filterArr = [];
     results.forEach(result => {
       if (
@@ -44,12 +48,26 @@ export default function User() {
       }
     });
 
-    // filteredArr.forEach(filtered => {
-    //   if (filtered.tags) {
-
-    //   }
-    // })
-    setFilter(filterArr);
+    // If a tag parameter exists we then continue to filter by tag
+    if (tag) {
+      let filterTag = [];
+      filterArr.forEach(result => {
+        if (result.tags.length > 0) {
+          result.tags.forEach(data => {
+            if (
+              data
+                .toLowerCase()
+                .replace(/\s/g, "")
+                .indexOf(tag.toLowerCase().replace(/\s/g, "")) > -1
+            ) {
+              filterTag.push(result);
+            }
+          });
+        }
+      });
+      return setFilter(filterTag);
+    }
+    return setFilter(filterArr);
   }
 
   function findAverage(arr) {
@@ -67,14 +85,22 @@ export default function User() {
     filter[index].tags = [...filter[index].tags, tags];
     setFilter([...filter]);
   }
-  console.log(filter);
 
   return (
     <div className="paper">
-      <Searchbar placeholder="Search by name" handleSearch={filterName} />
-      <Searchbar
+      <input
+        className="searchbar"
+        value={name}
+        onChange={e => setName(e.target.value)}
+        onKeyUp={e => filterResults(e.target.value.trim(), tag)}
+        placeholder="Search by name"
+      />
+      <input
+        className="searchbar"
+        value={tag}
+        onChange={e => setTag(e.target.value)}
+        onKeyUp={e => filterResults(name, e.target.value.trim())}
         placeholder="Search by tag"
-        handleSearch={() => console.log("nothing")}
       />
       <UserInfo
         users={filter}

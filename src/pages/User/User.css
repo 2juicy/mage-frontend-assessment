@@ -4,3 +4,19 @@
   box-shadow: 2px 0.5px rgba(0, 0, 0, 0.25);
   margin: 15px;
 }
+
+.searchbar {
+  font-family: "Raleway", sans-serif;
+  width: calc(100% - 19px);
+  height: 35px;
+  margin: 5px;
+  padding: 5px;
+  font-size: 18px;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.25);
+}
+
+.searchbar:focus {
+  outline: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.55);
+}
