@@ -2,10 +2,14 @@
   margin: 0 0 0 15px;
 }
 
-.grades > tr > th,
-.grades > tr > td {
+th,
+td {
   padding: 0;
   font-weight: normal;
+}
+
+th {
+  padding-bottom: 15px;
 }
 
 .expandible {
