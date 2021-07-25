@@ -1,0 +1,57 @@
+import "./User.css";
+import { useState, useEffect } from "react";
+import UserInfo from "../../components/UserInfo/UserInfo";
+import Searchbar from "../../components/Searchbar/Searchbar";
+
+export default function User() {
+  const URL = "https://api.hatchways.io/assessment/students";
+  const [results, setResults] = useState([]);
+  const [filter, setFilter] = useState([]);
+
+  function fetchData(url) {
+    return fetch(url)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw response;
+      })
+      .catch(error => console.error("Bad request", error));
+  }
+
+  useEffect(() => {
+    fetchData(URL).then(data => {
+      setResults(data.students);
+      setFilter(data.students);
+    });
+  }, []);
+
+  function filterInput(input) {
+    let filterArr = [];
+    results.forEach(results => {
+      if (
+        results.firstName
+          .concat(" ", results.lastName)
+          .toLowerCase()
+          .replace(/\s/g, "")
+          .indexOf(input.toLowerCase().replace(/\s/g, "")) > -1
+      ) {
+        filterArr.push(results);
+      }
+    });
+    setFilter(filterArr);
+  }
+
+  function findAverage(arr) {
+    return arr.reduce(function (avg, value, _, { length }) {
+      return avg + value / length;
+    }, 0);
+  }
+
+  return (
+    <div>
+      <Searchbar placeholder="Search by name" handleSearch={filterInput} />
+      <UserInfo users={filter} findAverage={findAverage} />
+    </div>
+  );
+}
