@@ -57,7 +57,7 @@ export default function User() {
   console.log(filter);
 
   return (
-    <div>
+    <div className="paper">
       <Searchbar placeholder="Search by name" handleSearch={filterInput} />
       <UserInfo
         users={filter}
