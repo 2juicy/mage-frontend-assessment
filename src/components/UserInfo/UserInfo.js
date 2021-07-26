@@ -23,13 +23,13 @@ export default function UserInfo({ users, findAverage, handleExpand, addTag }) {
                 show={user.show ? "expandible" : "hidden"}
               />
             </Grades>
-            {user.tags.length ? (
+            {user.tags.length > 0 && (
               <div className="tagbar">
                 {user.tags.map((tag, index) => (
                   <p key={index}>{tag}</p>
                 ))}
               </div>
-            ) : null}
+            )}
             <AddTag
               className="tag-input"
               placeholder="Add a tag"
