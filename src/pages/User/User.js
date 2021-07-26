@@ -78,8 +78,13 @@ export default function User() {
   }
 
   function handleExpand(index) {
-    filter[index].show = !filter[index].show;
-    setFilter([...filter]);
+    let clonedData = JSON.parse(JSON.stringify(filter));
+    clonedData[index].show = !clonedData[index].show;
+    // console.log(
+    //   `Clone: ${clonedData[index].show}`,
+    //   `Original: ${filter[index].show}`
+    // );
+    setFilter([...clonedData]);
   }
 
   function addTag(tag, index) {
