@@ -80,10 +80,6 @@ export default function User() {
   function handleExpand(index) {
     let clonedData = JSON.parse(JSON.stringify(filter));
     clonedData[index].show = !clonedData[index].show;
-    // console.log(
-    //   `Clone: ${clonedData[index].show}`,
-    //   `Original: ${filter[index].show}`
-    // );
     setFilter([...clonedData]);
   }
 
