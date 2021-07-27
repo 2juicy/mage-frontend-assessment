@@ -2,7 +2,7 @@ import "./User.css";
 import { useState, useEffect } from "react";
 import UserInfo from "../../components/UserInfo/UserInfo";
 import Searchbar from "../../components/Searchbar/Searchbar";
-import users from "../../users.json";
+import users from "./users.json";
 
 // function fetchData(url) {
 //   return fetch(url)
