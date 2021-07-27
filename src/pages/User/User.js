@@ -1,6 +1,7 @@
 import "./User.css";
 import { useState, useEffect } from "react";
 import UserInfo from "../../components/UserInfo/UserInfo";
+import Searchbar from "../../components/Searchbar/Searchbar";
 
 export default function User() {
   // Stored fetch request data
@@ -8,8 +9,10 @@ export default function User() {
   const [results, setResults] = useState([]);
   // Search plus filtered results
   const [filter, setFilter] = useState([]);
-  const [name, setName] = useState("");
-  const [tag, setTag] = useState("");
+  const [form, setForm] = useState({
+    name: "",
+    tag: "",
+  });
 
   function fetchData(url) {
     return fetch(url)
@@ -75,6 +78,13 @@ export default function User() {
     setFilter([...clonedData]);
   }
 
+  function handleForm(e) {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  }
+
   function addTag(tag, index) {
     if (!filter[index].tags.includes(tag)) {
       filter[index].tags = [...filter[index].tags, tag];
@@ -84,19 +94,19 @@ export default function User() {
 
   return (
     <div className="paper">
-      <input
-        className="searchbar"
-        value={name}
-        onChange={e => setName(e.target.value)}
-        onKeyUp={e => filterResults(e.target.value.trim(), tag)}
+      <Searchbar
         placeholder="Search by name"
+        name="name"
+        value={form.name}
+        handleForm={handleForm}
+        handleInput={() => filterResults(form.name, form.tag)}
       />
-      <input
-        className="searchbar"
-        value={tag}
-        onChange={e => setTag(e.target.value)}
-        onKeyUp={e => filterResults(name, e.target.value.trim())}
+      <Searchbar
         placeholder="Search by tag"
+        name="tag"
+        value={form.tag}
+        handleForm={handleForm}
+        handleInput={() => filterResults(form.name, form.tag)}
       />
       <UserInfo users={filter} handleExpand={handleExpand} addTag={addTag} />
     </div>
