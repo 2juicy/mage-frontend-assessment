@@ -37,33 +37,28 @@ export default function User() {
   }, []);
 
   function filterResults(name, tag) {
-    // First we filter by name
+    // We use this function to see a substring or string exists in target string.
+    function findWord(target, string) {
+      return target
+        .toLowerCase()
+        .replace(/\s/g, "")
+        .indexOf(string.toLowerCase().replace(/\s/g, "")) > -1
+        ? true
+        : false;
+    }
+    // First we filter by name by looping through.
     let filterArr = [];
     results.forEach(result => {
-      if (
-        result.firstName
-          .concat(" ", result.lastName)
-          .toLowerCase()
-          .replace(/\s/g, "")
-          .indexOf(name.toLowerCase().replace(/\s/g, "")) > -1
-      ) {
+      if (findWord(result.firstName + result.lastName, name))
         filterArr.push(result);
-      }
     });
 
-    // If a tag parameter exists we then continue to filter by tag
+    // If a tag parameter exists we then continue to filter by tag.
     if (tag.length > 0) {
       let filterTag = [];
       filterArr.forEach(result => {
         result.tags.some(data => {
-          if (
-            data
-              .toLowerCase()
-              .replace(/\s/g, "")
-              .indexOf(tag.toLowerCase().replace(/\s/g, "")) > -1
-          ) {
-            return filterTag.push(result);
-          }
+          if (findWord(data, tag)) return filterTag.push(result);
           return false;
         });
       });
@@ -72,17 +67,17 @@ export default function User() {
     return setFilter(filterArr);
   }
 
-  function handleExpand(index) {
-    let clonedData = JSON.parse(JSON.stringify(filter));
-    clonedData[index].show = !clonedData[index].show;
-    setFilter([...clonedData]);
-  }
-
   function handleForm(e) {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
+  }
+
+  function handleExpand(index) {
+    let clonedData = JSON.parse(JSON.stringify(filter));
+    clonedData[index].show = !clonedData[index].show;
+    setFilter([...clonedData]);
   }
 
   function addTag(tag, index) {
