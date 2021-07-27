@@ -3,27 +3,25 @@ import { useState, useEffect } from "react";
 import UserInfo from "../../components/UserInfo/UserInfo";
 import Searchbar from "../../components/Searchbar/Searchbar";
 
+function fetchData(url) {
+  return fetch(url)
+    .then(response => {
+      if (response.ok) return response.json();
+      throw response;
+    })
+    .catch(error => console.error("Bad request", error));
+}
+
 export default function User() {
-  // Stored fetch request data
+  // Stored fetch request data.
   const URL = "https://api.hatchways.io/assessment/students";
   const [results, setResults] = useState([]);
-  // Search plus filtered results
+  // Search plus filtered results and form state.
   const [filter, setFilter] = useState([]);
   const [form, setForm] = useState({
     name: "",
     tag: "",
   });
-
-  function fetchData(url) {
-    return fetch(url)
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw response;
-      })
-      .catch(error => console.error("Bad request", error));
-  }
 
   useEffect(() => {
     fetchData(URL).then(data => {
@@ -38,7 +36,7 @@ export default function User() {
 
   function filterResults(name, tag) {
     // We use this function to see a substring or string exists in target string.
-    function findWord(target, string) {
+    function hasWord(target, string) {
       return target
         .toLowerCase()
         .replace(/\s/g, "")
@@ -47,23 +45,23 @@ export default function User() {
         : false;
     }
     // First we filter by name by looping through.
-    let filterArr = [];
+    let filterName = [];
     results.forEach(result => {
-      if (findWord(result.firstName + result.lastName, name))
-        filterArr.push(result);
+      if (hasWord(result.firstName + result.lastName, name))
+        filterName.push(result);
     });
     // If a tag parameter exists we then continue to filter by tag.
     if (tag.length > 0) {
       let filterTag = [];
-      filterArr.forEach(result => {
+      filterName.forEach(result => {
         result.tags.some(data => {
-          if (findWord(data, tag)) return filterTag.push(result);
+          if (hasWord(data, tag)) return filterTag.push(result);
           return false;
         });
       });
       return setFilter(filterTag);
     }
-    return setFilter(filterArr);
+    return setFilter(filterName);
   }
 
   function handleForm(e) {

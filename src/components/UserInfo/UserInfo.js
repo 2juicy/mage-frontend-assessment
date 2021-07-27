@@ -4,7 +4,7 @@ import Grades from "../Grades/Grades";
 import Expandible from "../Expandible/Expandible";
 import AddTag from "../AddTag/AddTag";
 
-export default function UserInfo({ users, handleExpand, addTag }) {
+export default function UserInfo({ users, addTag, handleExpand }) {
   return (
     <>
       {users.map((user, index) => (

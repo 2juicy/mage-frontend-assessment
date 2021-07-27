@@ -1,18 +1,18 @@
 import "./Searchbar.css";
 
 export default function Searchbar({
+  placeholder,
   value,
   name,
   handleForm,
   handleInput,
-  placeholder,
 }) {
   return (
     <input
-      placeholder={placeholder}
-      name={name}
       className="searchbar"
+      placeholder={placeholder}
       value={value}
+      name={name}
       onChange={e => handleForm(e)}
       onKeyUp={handleInput}
     />
