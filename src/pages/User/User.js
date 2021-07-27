@@ -2,19 +2,20 @@ import "./User.css";
 import { useState, useEffect } from "react";
 import UserInfo from "../../components/UserInfo/UserInfo";
 import Searchbar from "../../components/Searchbar/Searchbar";
+import users from "../../users.json";
 
-function fetchData(url) {
-  return fetch(url)
-    .then(response => {
-      if (response.ok) return response.json();
-      throw response;
-    })
-    .catch(error => console.error("Bad request", error));
-}
+// function fetchData(url) {
+//   return fetch(url)
+//     .then(response => {
+//       if (response.ok) return response.json();
+//       throw response;
+//     })
+//     .catch(error => console.error("Bad request", error));
+// }
 
 export default function User() {
   // Stored fetch request data.
-  const URL = "https://api.hatchways.io/assessment/students";
+  // const URL = "https://api.hatchways.io/assessment/students";
   const [results, setResults] = useState([]);
   // Search plus filtered results and form state.
   const [filter, setFilter] = useState([]);
@@ -24,14 +25,20 @@ export default function User() {
   });
 
   useEffect(() => {
-    fetchData(URL).then(data => {
-      setResults(data.students);
-      data.students.forEach(student => {
-        student.show = false;
-        student.tags = [];
-      });
-      setFilter(data.students);
+    // fetchData(URL).then(data => {
+    //   setResults(data.students);
+    // data.students.forEach(student => {
+    //   student.show = false;
+    //   student.tags = [];
+    // });
+    //   setFilter(data.students);
+    // });
+    setResults(users.students);
+    users.students.forEach(student => {
+      student.show = false;
+      student.tags = [];
     });
+    setFilter(users.students);
   }, []);
 
   function filterResults(name, tag) {
