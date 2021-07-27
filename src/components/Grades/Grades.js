@@ -3,7 +3,6 @@ import { useMemo, useCallback } from "react";
 
 export default function Grades({ grades, children }) {
   const findAverage = useCallback(arr => {
-    console.log("render");
     return arr.reduce(function (avg, value, _, { length }) {
       return avg + value / length;
     }, 0);
