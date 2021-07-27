@@ -52,29 +52,21 @@ export default function User() {
     if (tag.length > 0) {
       let filterTag = [];
       filterArr.forEach(result => {
-        if (result.tags.length > 0) {
-          result.tags.some(data => {
-            if (
-              data
-                .toLowerCase()
-                .replace(/\s/g, "")
-                .indexOf(tag.toLowerCase().replace(/\s/g, "")) > -1
-            ) {
-              return filterTag.push(result);
-            }
-            return false;
-          });
-        }
+        result.tags.some(data => {
+          if (
+            data
+              .toLowerCase()
+              .replace(/\s/g, "")
+              .indexOf(tag.toLowerCase().replace(/\s/g, "")) > -1
+          ) {
+            return filterTag.push(result);
+          }
+          return false;
+        });
       });
       return setFilter(filterTag);
     }
     return setFilter(filterArr);
-  }
-
-  function findAverage(arr) {
-    return arr.reduce(function (avg, value, _, { length }) {
-      return avg + value / length;
-    }, 0);
   }
 
   function handleExpand(index) {
@@ -106,12 +98,7 @@ export default function User() {
         onKeyUp={e => filterResults(name, e.target.value.trim())}
         placeholder="Search by tag"
       />
-      <UserInfo
-        users={filter}
-        findAverage={findAverage}
-        handleExpand={handleExpand}
-        addTag={addTag}
-      />
+      <UserInfo users={filter} handleExpand={handleExpand} addTag={addTag} />
     </div>
   );
 }

@@ -4,7 +4,7 @@ import Grades from "../Grades/Grades";
 import Expandible from "../Expandible/Expandible";
 import AddTag from "../AddTag/AddTag";
 
-export default function UserInfo({ users, findAverage, handleExpand, addTag }) {
+export default function UserInfo({ users, handleExpand, addTag }) {
   return (
     <>
       {users.map((user, index) => (
@@ -17,7 +17,7 @@ export default function UserInfo({ users, findAverage, handleExpand, addTag }) {
             <p>Email: {user.email}</p>
             <p>Company: {user.company}</p>
             <p>Skill: {user.skill}</p>
-            <Grades grades={user.grades} findAverage={findAverage}>
+            <Grades grades={user.grades}>
               <Expandible
                 contents={user.grades}
                 show={user.show ? "expandible" : "hidden"}
