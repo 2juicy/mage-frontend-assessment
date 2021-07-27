@@ -1,9 +1,12 @@
 import "./Thumbnail.css";
+import React from "react";
 
-export default function Thumbnail({ thumbnail }) {
+function Thumbnail({ thumbnail }) {
   return (
     <div className="thumbnail">
       <img src={thumbnail} alt="thumbnail" />
     </div>
   );
 }
+
+export default React.memo(Thumbnail);
