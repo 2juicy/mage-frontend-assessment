@@ -52,7 +52,6 @@ export default function User() {
       if (findWord(result.firstName + result.lastName, name))
         filterArr.push(result);
     });
-
     // If a tag parameter exists we then continue to filter by tag.
     if (tag.length > 0) {
       let filterTag = [];
@@ -75,6 +74,7 @@ export default function User() {
   }
 
   function handleExpand(index) {
+    // We clone the data to remove references before we set the state to avoid mutating the state.
     let clonedData = JSON.parse(JSON.stringify(filter));
     clonedData[index].show = !clonedData[index].show;
     setFilter([...clonedData]);
