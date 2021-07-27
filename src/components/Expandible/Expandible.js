@@ -1,6 +1,7 @@
 import "./Expandible.css";
+import React from "react";
 
-export default function Expandible({ contents, show }) {
+function Expandible({ contents, show }) {
   return (
     <tbody className={show}>
       {contents.map((content, index) => (
@@ -12,3 +13,5 @@ export default function Expandible({ contents, show }) {
     </tbody>
   );
 }
+
+export default React.memo(Expandible);
