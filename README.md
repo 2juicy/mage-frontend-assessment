@@ -20,8 +20,7 @@ This assessment will be evaluated based on the following criteria:
   well organized?
 - **Code Performance**: Is your code efficient? Did you use appropriate data
   structures?
-- **Best Practices**: Did you utilize good programming practices (write unit tests,
-  avoid anti-patterns)? Did you show a good grasp of your language/framework of
+- **Best Practices**: Did you utilize good programming practices? Did you show a good grasp of your language/framework of
   choice?
 
 1. > The first step of the assignment is to fetch data from a public JSON API, and present the information on the screen.
