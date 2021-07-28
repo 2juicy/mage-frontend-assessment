@@ -45,18 +45,17 @@ export default function User() {
       );
     }
     // First we filter by name by looping through.
-    let filterName = [];
+    const filterName = [];
     results.forEach(result => {
       if (hasWord(result.firstName + result.lastName, name))
         filterName.push(result);
     });
     // If a tag parameter exists we then continue to filter by tag.
     if (tag.length > 0) {
-      let filterTag = [];
+      const filterTag = [];
       filterName.forEach(result => {
         result.tags.some(data => {
-          if (hasWord(data, tag)) return filterTag.push(result);
-          return false;
+          return hasWord(data, tag) ? filterTag.push(result) : false;
         });
       });
       return setFilter(filterTag);
