@@ -37,12 +37,12 @@ export default function User() {
   function filterResults(name, tag) {
     // We use this function to see a substring or string exists in target string.
     function hasWord(target, string) {
-      return target
-        .toLowerCase()
-        .replace(/\s/g, "")
-        .indexOf(string.toLowerCase().replace(/\s/g, "")) > -1
-        ? true
-        : false;
+      return (
+        target
+          .toLowerCase()
+          .replace(/\s/g, "")
+          .indexOf(string.toLowerCase().replace(/\s/g, "")) > -1
+      );
     }
     // First we filter by name by looping through.
     let filterName = [];
