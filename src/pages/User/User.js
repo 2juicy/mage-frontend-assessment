@@ -44,26 +44,25 @@ export default function User() {
   function filterResults(name, tag) {
     // We use this function to see a substring or string exists in target string.
     function hasWord(target, string) {
-      return target
-        .toLowerCase()
-        .replace(/\s/g, "")
-        .indexOf(string.toLowerCase().replace(/\s/g, "")) > -1
-        ? true
-        : false;
+      return (
+        target
+          .toLowerCase()
+          .replace(/\s/g, "")
+          .indexOf(string.toLowerCase().replace(/\s/g, "")) > -1
+      );
     }
     // First we filter by name by looping through.
-    let filterName = [];
+    const filterName = [];
     results.forEach(result => {
       if (hasWord(result.firstName + result.lastName, name))
         filterName.push(result);
     });
     // If a tag parameter exists we then continue to filter by tag.
     if (tag.length > 0) {
-      let filterTag = [];
+      const filterTag = [];
       filterName.forEach(result => {
         result.tags.some(data => {
-          if (hasWord(data, tag)) return filterTag.push(result);
-          return false;
+          return hasWord(data, tag) ? filterTag.push(result) : false;
         });
       });
       return setFilter(filterTag);
