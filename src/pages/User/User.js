@@ -86,20 +86,16 @@ export default function User() {
 
   return (
     <div className="paper">
-      <Searchbar
-        placeholder="Search by name"
-        name="name"
-        value={form.name}
-        handleForm={handleForm}
-        handleInput={() => filterResults(form.name, form.tag)}
-      />
-      <Searchbar
-        placeholder="Search by tag"
-        name="tag"
-        value={form.tag}
-        handleForm={handleForm}
-        handleInput={() => filterResults(form.name, form.tag)}
-      />
+      {Object.keys(form).map(key => (
+        <Searchbar
+          key={key}
+          placeholder={`Search by ${key}`}
+          name={key}
+          value={form[key]}
+          handleForm={handleForm}
+          handleInput={() => filterResults(form.name, form.tag)}
+        />
+      ))}
       <UserInfo users={filter} handleExpand={handleExpand} addTag={addTag} />
     </div>
   );
