@@ -27,7 +27,7 @@ This assessment will be evaluated based on the following criteria:
 
 2. > The second step of the assignment is to style the web page. Replicate the style of the image below as best as you can with the [Raleway](https://fonts.google.com/specimen/Raleway) font.
 
-[Layout](https://i.imgur.com/Z9SsmOQ.png)
+![Layout](https://i.imgur.com/Z9SsmOQ.png)
 
 3. > Add a text input, where a user can filter the list of students by their name (including full name!).
 
