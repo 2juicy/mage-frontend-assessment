@@ -1,3 +1,5 @@
+###### Update Sunday, August 22, 2021 11:29 AM (PDT) with TypeScript
+
 ## `Quick start`
 
 In the project directory terminal, you can run:
@@ -39,4 +41,5 @@ This assessment will be evaluated based on the following criteria:
 5. > Finally, add a text input field to add tags for a specific student. You will then add another search bar to search for students based on tags.
 
 # [Deployed on GH Pages](https://2juicy.github.io/mage-frontend-assessment/)
+
 </details>
