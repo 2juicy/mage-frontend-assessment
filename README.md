@@ -13,6 +13,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 # `Instructions`
 
+<details>
+  <summary>Click for instructions</summary>
+
 This assessment will be evaluated based on the following criteria:
 
 - **Correctness**: Is your solution complete and does it pass different test cases?
@@ -36,3 +39,4 @@ This assessment will be evaluated based on the following criteria:
 5. > Finally, add a text input field to add tags for a specific student. You will then add another search bar to search for students based on tags.
 
 # [Deployed on GH Pages](https://2juicy.github.io/mage-frontend-assessment/)
+</details>
