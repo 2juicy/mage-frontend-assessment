@@ -7,7 +7,7 @@ export default function Grades({
   grades,
   children,
 }: {
-  grades: Array<number>;
+  grades: Array<any>;
   children: React.ReactNode;
 }) {
   const averageGrade = useMemo(() => findAverage(grades), [grades]);

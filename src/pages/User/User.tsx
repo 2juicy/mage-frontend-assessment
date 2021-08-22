@@ -70,7 +70,7 @@ export default function User() {
     setFilter([...clonedData]);
   }
 
-  function addTag(tag: string, index: number) {
+  function handleTag(tag: string, index: number) {
     if (!filter[index].tags.includes(tag)) {
       filter[index].tags = [...filter[index].tags, tag];
       setFilter([...filter]);
@@ -89,7 +89,11 @@ export default function User() {
           handleInput={() => filterResults(form.name, form.tag)}
         />
       ))}
-      <UserInfo users={filter} handleExpand={handleExpand} addTag={addTag} />
+      <UserInfo
+        users={filter}
+        handleExpand={handleExpand}
+        handleTag={handleTag}
+      />
     </div>
   );
 }
