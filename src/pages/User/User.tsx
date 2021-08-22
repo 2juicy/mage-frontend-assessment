@@ -71,7 +71,7 @@ export default function User() {
   }
 
   function handleTag(tag: string, index: number) {
-    if (!filter[index].tags.includes(tag)) {
+    if (!filter[index].tags.includes(tag) && tag) {
       filter[index].tags = [...filter[index].tags, tag];
       setFilter([...filter]);
     }

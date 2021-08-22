@@ -6,6 +6,12 @@ export default function Searchbar({
   name,
   handleForm,
   handleInput,
+}: {
+  placeholder: string;
+  value: string;
+  name: string;
+  handleForm: (e: any) => void;
+  handleInput: () => void;
 }) {
   return (
     <input
