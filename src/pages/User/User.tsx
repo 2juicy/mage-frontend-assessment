@@ -2,29 +2,8 @@ import "./User.css";
 import { useState, useEffect } from "react";
 import UserInfo from "../../components/UserInfo/UserInfo";
 import Searchbar from "../../components/Searchbar/Searchbar";
-
-function fetchData(url: string) {
-  return fetch(url)
-    .then(response => {
-      if (response.ok) return response.json();
-      throw response;
-    })
-    .catch(error => console.error("Bad request", error));
-}
-
-interface Student {
-  city: string;
-  company: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  grades: string[];
-  id: string;
-  pic: string;
-  skill: string;
-  show: boolean;
-  tags: Array<string>;
-}
+import { Student } from "../../interface/Student";
+import { fetchData } from "../../utils/index";
 
 export default function User() {
   // Stored fetch request data.
@@ -36,7 +15,6 @@ export default function User() {
     name: "",
     tag: "",
   });
-  console.log(results[1]);
 
   useEffect(() => {
     fetchData(URL).then(data => {
