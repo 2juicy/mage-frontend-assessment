@@ -17,9 +17,10 @@ export default function AddTag({
       className="tag-input"
       value={input}
       onChange={e => setInput(e.target.value)}
-      onKeyDown={(e: any) => {
+      onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+        const value = (e.target as HTMLInputElement).value.trim();
         if (e.key === "Enter") {
-          handleTag(e.target.value.trim(), index);
+          handleTag(value, index);
           setInput("");
         }
       }}
