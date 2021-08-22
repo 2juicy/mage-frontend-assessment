@@ -1,13 +1,15 @@
+import React from "react";
 import "./Grades.css";
 import { useMemo } from "react";
+import { findAverage } from "../../utils";
 
-function findAverage(arr) {
-  return arr.reduce(function (avg, value, _, { length }) {
-    return avg + value / length;
-  }, 0);
-}
-
-export default function Grades({ grades, children }) {
+export default function Grades({
+  grades,
+  children,
+}: {
+  grades: Array<any>;
+  children: React.ReactNode;
+}) {
   const averageGrade = useMemo(() => findAverage(grades), [grades]);
 
   return (

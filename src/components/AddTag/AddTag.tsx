@@ -1,7 +1,15 @@
 import "./AddTag.css";
-import { useState } from "react";
+import React, { useState } from "react";
 
-export default function AddTag({ placeholder, addTag, index }) {
+export default function AddTag({
+  placeholder,
+  handleTag,
+  index,
+}: {
+  placeholder: string;
+  handleTag: (tag: string, index: number) => void;
+  index: number;
+}) {
   const [input, setInput] = useState("");
 
   return (
@@ -9,9 +17,9 @@ export default function AddTag({ placeholder, addTag, index }) {
       className="tag-input"
       value={input}
       onChange={e => setInput(e.target.value)}
-      onKeyDown={e => {
+      onKeyDown={(e: any) => {
         if (e.key === "Enter") {
-          addTag(e.target.value.trim(), index);
+          handleTag(e.target.value.trim(), index);
           setInput("");
         }
       }}

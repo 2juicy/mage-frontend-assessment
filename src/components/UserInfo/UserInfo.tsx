@@ -3,11 +3,20 @@ import Thumbnail from "../Thumbnail/Thumbnail";
 import Grades from "../Grades/Grades";
 import Expandible from "../Expandible/Expandible";
 import AddTag from "../AddTag/AddTag";
+import { Student } from "../../interface/Student";
 
-export default function UserInfo({ users, addTag, handleExpand }) {
+export default function UserInfo({
+  users,
+  handleTag,
+  handleExpand,
+}: {
+  users: Array<Student>;
+  handleTag: (tag: string, index: number) => void;
+  handleExpand: (index: number) => void;
+}) {
   return (
     <>
-      {users.map((user, index) => (
+      {users.map((user: Student, index: number) => (
         <div className="flex-container" key={user.id}>
           <Thumbnail thumbnail={user.pic} />
           <div className="user-info">
@@ -31,9 +40,8 @@ export default function UserInfo({ users, addTag, handleExpand }) {
               </div>
             )}
             <AddTag
-              className="tag-input"
               placeholder="Add a tag"
-              addTag={addTag}
+              handleTag={handleTag}
               index={index}
             />
           </div>
