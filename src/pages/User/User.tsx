@@ -12,26 +12,39 @@ function fetchData(url: string) {
     .catch(error => console.error("Bad request", error));
 }
 
+interface Student {
+  city: string;
+  company: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  grades: string[];
+  id: string;
+  pic: string;
+  skill: string;
+  show: boolean;
+  tags: Array<string>;
+}
+
 export default function User() {
   // Stored fetch request data.
   const URL = "https://api.hatchways.io/assessment/students";
-  const [results, setResults]: any[] = useState([]);
+  const [results, setResults] = useState<Student[]>([]);
   // Search plus filtered results and form state.
-  const [filter, setFilter]: any[] = useState([]);
+  const [filter, setFilter] = useState<Student[]>([]);
   const [form, setForm] = useState({
     name: "",
     tag: "",
   });
+  console.log(results[1]);
 
   useEffect(() => {
     fetchData(URL).then(data => {
       setResults(data.students);
-      data.students.forEach(
-        (student: { show: boolean; tags: Array<string> }) => {
-          student.show = false;
-          student.tags = [];
-        }
-      );
+      data.students.forEach((student: { show: boolean; tags: string[] }) => {
+        student.show = false;
+        student.tags = [];
+      });
       setFilter(data.students);
     });
   }, []);
@@ -72,15 +85,14 @@ export default function User() {
     });
   }
 
-  function handleExpand(index: any) {
-    console.log(index);
+  function handleExpand(index: number) {
     // We clone the data to remove references before we set the state to avoid mutating the state.
     let clonedData = JSON.parse(JSON.stringify(filter));
     clonedData[index].show = !clonedData[index].show;
     setFilter([...clonedData]);
   }
 
-  function addTag(tag: any, index: any) {
+  function addTag(tag: string, index: number) {
     if (!filter[index].tags.includes(tag)) {
       filter[index].tags = [...filter[index].tags, tag];
       setFilter([...filter]);
