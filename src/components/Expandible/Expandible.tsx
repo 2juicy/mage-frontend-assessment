@@ -1,7 +1,13 @@
 import "./Expandible.css";
 import React from "react";
 
-function Expandible({ show, contents }) {
+function Expandible({
+  show,
+  contents,
+}: {
+  show: string;
+  contents: Array<string>;
+}) {
   return (
     <tbody className={show}>
       {contents.map((content, index) => (
