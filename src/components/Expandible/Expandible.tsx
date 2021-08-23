@@ -6,7 +6,7 @@ function Expandible({
   contents,
 }: {
   show: string;
-  contents: Array<string>;
+  contents: Array<number>;
 }) {
   return (
     <tbody className={show}>
