@@ -4,7 +4,7 @@ export interface Student {
   email: string;
   firstName: string;
   lastName: string;
-  grades: Array<any>;
+  grades: Array<string>;
   id: string;
   pic: string;
   skill: string;
