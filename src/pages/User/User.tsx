@@ -20,7 +20,12 @@ export default function User() {
     fetchData(URL).then(data => {
       setResults(data.students);
       data.students.forEach(
-        (student: { show: boolean; tags: Array<string> }) => {
+        (student: {
+          show: boolean;
+          tags: Array<string>;
+          grades: Array<number>;
+        }) => {
+          student.grades = student.grades.map(i => Number(i));
           student.show = false;
           student.tags = [];
         }
