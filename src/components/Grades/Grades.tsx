@@ -9,10 +9,7 @@ export default function Grades({
   grades: Array<string>;
   children: React.ReactNode;
 }) {
-  const averageGrade = useMemo(() => {
-    const numbers = grades.map(i => Number(i));
-    findAverage(numbers);
-  }, [grades]);
+  const averageGrade = useMemo(() => findAverage(grades), [grades]);
 
   return (
     <table className="grades">
