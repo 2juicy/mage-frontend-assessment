@@ -19,10 +19,12 @@ export default function User() {
   useEffect(() => {
     fetchData(URL).then(data => {
       setResults(data.students);
-      data.students.forEach((student: { show: boolean; tags: string[] }) => {
-        student.show = false;
-        student.tags = [];
-      });
+      data.students.forEach(
+        (student: { show: boolean; tags: Array<string> }) => {
+          student.show = false;
+          student.tags = [];
+        }
+      );
       setFilter(data.students);
     });
   }, []);
