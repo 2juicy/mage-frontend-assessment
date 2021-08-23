@@ -1,4 +1,3 @@
-import React from "react";
 import "./Grades.css";
 import { useMemo } from "react";
 import { findAverage } from "../../utils";
