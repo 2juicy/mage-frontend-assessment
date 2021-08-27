@@ -10,7 +10,7 @@ export default function Searchbar({
   placeholder: string;
   value: string;
   name: string;
-  handleForm: (e: any) => void;
+  handleForm: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleInput: () => void;
 }) {
   return (
