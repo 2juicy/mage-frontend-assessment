@@ -45,14 +45,14 @@ export default function User() {
       );
     }
     // First we filter by name by looping through.
-    const filterName: any[] = [];
-    results.forEach((result: { firstName: string; lastName: string }) => {
+    const filterName: Student[] = [];
+    results.forEach((result: Student) => {
       if (hasWord(result.firstName + result.lastName, name))
         filterName.push(result);
     });
     // If a tag parameter exists we then continue to filter by tag.
     if (tag.length > 0) {
-      const filterTag: any[] = [];
+      const filterTag: Student[] = [];
       filterName.forEach(result => {
         result.tags.some((data: string) => {
           return hasWord(data, tag) ? filterTag.push(result) : false;
