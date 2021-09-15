@@ -1,5 +1,5 @@
 import "./AddTag.css";
-import React, { useState } from "react";
+import React, { useRef } from "react";
 
 export default function AddTag({
   placeholder,
@@ -10,18 +10,17 @@ export default function AddTag({
   handleTag: (tag: string, index: number) => void;
   index: number;
 }) {
-  const [input, setInput] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
 
   return (
     <input
       className="tag-input"
-      value={input}
-      onChange={e => setInput(e.target.value)}
-      onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-        const value = (e.target as HTMLInputElement).value.trim();
-        if (e.key === "Enter" && value) {
-          handleTag(value, index);
-          setInput("");
+      ref={inputRef}
+      type="text"
+      onKeyDown={(e: React.KeyboardEvent) => {
+        if (e.key === "Enter" && inputRef.current) {
+          handleTag(inputRef.current.value, index);
+          inputRef.current.value = "";
         }
       }}
       placeholder={placeholder}
