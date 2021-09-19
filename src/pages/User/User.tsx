@@ -10,7 +10,6 @@ export default function User() {
   const URL = "https://api.hatchways.io/assessment/students";
   const [results, setResults] = useState<Student[]>([]);
   // Search plus filtered results and form state.
-  const [filter, setFilter] = useState<Student[]>([]);
   const [form, setForm] = useState({
     name: "",
     tag: "",
@@ -18,7 +17,6 @@ export default function User() {
 
   useEffect(() => {
     fetchData(URL).then(data => {
-      setResults(data.students);
       data.students.forEach(
         (student: {
           show: boolean;
@@ -30,11 +28,11 @@ export default function User() {
           student.tags = [];
         }
       );
-      setFilter(data.students);
+      setResults(data.students);
     });
   }, []);
 
-  function filterResults(name: string, tag: string) {
+  function filterResults(data: Student[]) {
     // We use this function to see a substring or string exists in target string.
     function hasWord(target: string, string: string) {
       return (
@@ -47,20 +45,20 @@ export default function User() {
     // First we filter by name by looping through.
     const filterName: Student[] = [];
     results.forEach((result: Student) => {
-      if (hasWord(result.firstName + result.lastName, name))
+      if (hasWord(result.firstName + result.lastName, form.name))
         filterName.push(result);
     });
     // If a tag parameter exists we then continue to filter by tag.
-    if (tag.length > 0) {
+    if (form.tag.length > 0) {
       const filterTag: Student[] = [];
       filterName.forEach(result => {
         result.tags.some((data: string) => {
-          return hasWord(data, tag) ? filterTag.push(result) : false;
+          return hasWord(data, form.tag) ? filterTag.push(result) : false;
         });
       });
-      return setFilter(filterTag);
+      return filterTag;
     }
-    return setFilter(filterName);
+    return filterName;
   }
 
   function handleForm(e: React.ChangeEvent<HTMLInputElement>) {
@@ -72,15 +70,15 @@ export default function User() {
 
   function handleExpand(index: number) {
     // We clone the data to remove references before we set the state to avoid mutating the state.
-    let clonedData = JSON.parse(JSON.stringify(filter));
+    let clonedData = JSON.parse(JSON.stringify(results));
     clonedData[index].show = !clonedData[index].show;
-    setFilter([...clonedData]);
+    setResults([...clonedData]);
   }
 
   function handleTag(tag: string, index: number) {
-    if (!filter[index].tags.includes(tag) && tag) {
-      filter[index].tags = [...filter[index].tags, tag];
-      setFilter([...filter]);
+    if (!results[index].tags.includes(tag) && tag) {
+      results[index].tags = [...results[index].tags, tag];
+      setResults([...results]);
     }
   }
 
@@ -93,11 +91,11 @@ export default function User() {
           name={key}
           value={form[key]}
           handleForm={handleForm}
-          handleInput={() => filterResults(form.name, form.tag)}
+          handleInput={() => filterResults(results)}
         />
       ))}
       <UserInfo
-        users={filter}
+        users={filterResults(results)}
         handleExpand={handleExpand}
         handleTag={handleTag}
       />
