@@ -16,44 +16,48 @@ export default function UserInfo({
 }) {
   return (
     <>
-      {users.map((user: Student, index: number) => (
-        <div className="flex-container" key={user.id}>
-          <Thumbnail thumbnail={user.pic} />
-          <div className="user-info">
-            <h2>
-              {user.firstName} {user.lastName}
-            </h2>
-            <p>Email: {user.email}</p>
-            <p>Company: {user.company}</p>
-            <p>Skill: {user.skill}</p>
-            <Grades grades={user.grades}>
-              <Expandible
-                contents={user.grades}
-                show={user.show ? "expandible" : "hidden"}
+      {users.map((user: Student) => {
+        const index = Number(user.id) - 1;
+
+        return (
+          <div className="flex-container" key={user.id}>
+            <Thumbnail thumbnail={user.pic} />
+            <div className="user-info">
+              <h2>
+                {user.firstName} {user.lastName}
+              </h2>
+              <p>Email: {user.email}</p>
+              <p>Company: {user.company}</p>
+              <p>Skill: {user.skill}</p>
+              <Grades grades={user.grades}>
+                <Expandible
+                  contents={user.grades}
+                  show={user.show ? "expandible" : "hidden"}
+                />
+              </Grades>
+              {user.tags.length > 0 && (
+                <div className="tagbar">
+                  {user.tags.map(tag => (
+                    <p key={tag}>{tag}</p>
+                  ))}
+                </div>
+              )}
+              <AddTag
+                placeholder="Add a tag"
+                handleTag={handleTag}
+                index={index}
               />
-            </Grades>
-            {user.tags.length > 0 && (
-              <div className="tagbar">
-                {user.tags.map((tag, index) => (
-                  <p key={index}>{tag}</p>
-                ))}
-              </div>
-            )}
-            <AddTag
-              placeholder="Add a tag"
-              handleTag={handleTag}
-              index={index}
-            />
+            </div>
+            <button
+              type="button"
+              className="expandible-button"
+              onClick={() => handleExpand(index)}
+            >
+              {user.show ? "-" : "+"}
+            </button>
           </div>
-          <button
-            type="button"
-            className="expandible-button"
-            onClick={() => handleExpand(index)}
-          >
-            {user.show ? "-" : "+"}
-          </button>
-        </div>
-      ))}
+        );
+      })}
     </>
   );
 }
