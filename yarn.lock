@@ -1566,9 +1566,9 @@
   version "3.0.3"
   resolved "https://registry.npmjs.org/@types/minimatch/-/minimatch-3.0.3.tgz"
 
-"@types/node@*", "@types/node@^16.10.2":
-  version "16.10.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.10.2.tgz#5764ca9aa94470adb4e1185fe2e9f19458992b2e"
+"@types/node@*", "@types/node@^18.6.5":
+  version "18.6.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.6.5.tgz#06caea822caf9e59d5034b695186ee74154d2802"
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
